@@ -1,0 +1,9 @@
+CREATE DATABASE SCOPED CREDENTIAL [taxi]
+WITH IDENTITY='SHARED ACCESS SIGNATURE',  
+SECRET = 'sp=r&st=2022-09-24T22:00:37Z&se=2022-09-25T06:00:37Z&spr=https&sv=2021-06-08&sr=b&sig=oZzOL3VXU6RUsK%2FMIrNn9vtkQBhJEyrf1Dc2nv9NUBo%3D'
+GO
+
+CREATE EXTERNAL DATA SOURCE taxi_data WITH (
+    LOCATION = 'https://tkdlsg.blob.core.windows.net/',
+    CREDENTIAL = taxi
+);
